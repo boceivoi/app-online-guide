@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>资料整理 · 乐鱼体育索引页</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f6fa;
+            color: #1d2b38;
+            line-height: 1.65;
+            padding: 1.5rem 1rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* 蓝绿点缀 */
+        .accent-border {
+            border-left: 5px solid #1f9a8e;
+            padding-left: 1rem;
+        }
+
+        /* 卡片网格 --- 故事式信息卡片 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0 1.5rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.6rem 1.4rem 1.4rem;
+            box-shadow: 0 8px 20px rgba(0, 40, 40, 0.04), 0 2px 6px rgba(0, 30, 30, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #e7edf2;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 28px rgba(16, 100, 100, 0.06);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 550;
+            letter-spacing: 0.01em;
+            margin-bottom: 0.6rem;
+            color: #0b4d4a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card h3::before {
+            content: "▹";
+            color: #1f9a8e;
+            font-size: 1.3rem;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #2e4050;
+            margin: 0;
+        }
+        .card .tag {
+            display: inline-block;
+            background: #e1f1ef;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #0c625b;
+            margin-top: 0.6rem;
+        }
+
+        /* hero 区（柔和开场） */
+        .hero-simple {
+            margin: 0.8rem 0 1.8rem;
+            padding: 0.2rem 0;
+        }
+        .hero-simple .kicker {
+            font-size: 1.1rem;
+            color: #3b5c66;
+            font-weight: 450;
+            letter-spacing: 0.3px;
+            border-bottom: 2px solid #b7dad5;
+            padding-bottom: 0.2rem;
+            display: inline-block;
+        }
+        .hero-simple h1 {
+            font-size: 2.1rem;
+            font-weight: 530;
+            line-height: 1.25;
+            margin: 0.7rem 0 0.5rem;
+            color: #0d3540;
+            max-width: 680px;
+        }
+        .hero-simple h1 span {
+            background: linear-gradient(135deg, #1b8379, #309e8c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 承接段落 */
+        .intro-block {
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            padding: 1.2rem 1.5rem;
+            border-radius: 28px;
+            margin: 2rem 0 1.2rem;
+            border: 1px solid #cddfe0;
+        }
+        .intro-block p {
+            font-size: 1.02rem;
+            margin-bottom: 1.2rem;
+        }
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 引用 / 旁注感 */
+        .note-box {
+            background: #e8f3f1;
+            padding: 1rem 1.5rem;
+            border-radius: 40px 12px 40px 12px;
+            margin: 2rem 0 0.5rem;
+            color: #1d4b46;
+            font-size: 0.96rem;
+            border: 1px solid #c4ddd7;
+        }
+
+        /* FAQ 摘要（简洁，故事式） */
+        .faq-mini {
+            margin: 2.2rem 0 1.8rem;
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 1.4rem 1.6rem;
+            box-shadow: 0 2px 12px rgba(26, 80, 80, 0.04);
+        }
+        .faq-mini details {
+            border-bottom: 1px solid #dee9ec;
+            padding: 0.7rem 0;
+        }
+        .faq-mini details:last-of-type {
+            border-bottom: none;
+        }
+        .faq-mini summary {
+            font-weight: 520;
+            cursor: pointer;
+            color: #1b5a55;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-mini summary::before {
+            content: "↪";
+            color: #1f9a8e;
+            font-weight: 400;
+            transition: transform 0.2s;
+        }
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+        .faq-mini .answer {
+            padding: 0.6rem 0.4rem 0.2rem 1.5rem;
+            color: #2b4450;
+            font-size: 0.95rem;
+        }
+
+        /* 温和结尾 */
+        .closing {
+            margin-top: 2.2rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #cdddd9;
+            font-size: 0.98rem;
+            color: #34565e;
+        }
+
+        /* 链接样式 */
+        a {
+            color: #117a6f;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1.5px;
+            text-decoration-color: #9dcdc5;
+            transition: all 0.2s;
+        }
+        a:hover {
+            color: #03564b;
+            text-decoration-color: #0a8a7b;
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.8rem 2.5rem; }
+            .hero-simple h1 { font-size: 1.7rem; }
+            .intro-block { padding: 1rem 1.2rem; }
+            .grid-cards { gap: 1rem; }
+            .card { padding: 1.3rem; }
+            .faq-mini { padding: 1rem 1.1rem; }
+        }
+        @media (max-width: 430px) {
+            .hero-simple h1 { font-size: 1.5rem; }
+            .note-box { border-radius: 24px 8px 24px 8px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场短句 -->
+    <div class="hero-simple">
+        <div class="kicker">一份信息索引 · 来自资料整理</div>
+        <h1>关于<span>乐鱼体育</span>，<br>我们整理过的几页笔记</h1>
+    </div>
+
+    <!-- 承接段落：从资料梳理角度 -->
+    <div class="intro-block">
+        <p>过去一段时间，我陆续接触了许多体育资讯与线上休闲服务的条目，其中反复被提及的一个名字是 <a href="https://app-online-leyu.com.cn">乐鱼体育</a>。起初只是作为众多索引条目之一存放，但随着翻阅和比对，它背后的内容结构、更新节奏以及信息呈现方式逐渐显出清晰的轮廓。</p>
+        <p>以下是我在做资料整理时，从分类、内容覆盖到使用情景的几个观察侧面。</p>
+    </div>
+
+    <!-- 特点列表：网格卡片 -->
+    <div class="grid-cards">
+        <div class="card">
+            <h3>分类条目清晰</h3>
+            <p>赛事、动态、数据阅览等模块区分度较高，适合按需查阅。资料夹中标记为“体育索引”的条目往往结构稳定。</p>
+            <span class="tag">目录式整理</span>
+        </div>
+        <div class="card">
+            <h3>内容覆盖范围</h3>
+            <p>从主流联赛到部分区域性赛事均有收录，更新频率在同类信息源中属中等偏上，适合日常关注。</p>
+            <span class="tag">多联赛</span>
+        </div>
+        <div class="card">
+            <h3>信息层级</h3>
+            <p>页面内导航与分类筛选的配合比较直觉，浏览时不需要反复跳转。对初次使用者来说学习成本较低。</p>
+            <span class="tag">低负担</span>
+        </div>
+        <div class="card">
+            <h3>辅助参考</h3>
+            <p>部分专题页面会附带历史数据或趋势简表，可作为体育资讯的辅助资料夹，不替代专业统计。</p>
+            <span class="tag">参考性质</span>
+        </div>
+    </div>
+
+    <!-- 场景 + 提示融合 -->
+    <div class="note-box">
+        <p style="margin-bottom: 0.4rem;"><strong>📋 资料整理小记</strong></p>
+        <p style="margin-bottom: 0.3rem;">如果你也是从零开始梳理体育类信息索引，不妨把 <a href="https://app-online-leyu.com.cn">乐鱼体育</a> 当作一个参考节点。我通常会把它放在“综合资讯”文件夹下，旁边会标注数据来源与更新日期。另外也建议搭配官方新闻源交叉比对，让信息链条更完整。</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">—— 以上仅代表个人整理习惯，不构成推荐或评价。</p>
+    </div>
+
+    <!-- FAQ 摘要：符合内容索引风格 -->
+    <div class="faq-mini">
+        <h3 style="font-weight: 480; color: #0d4f4a; margin-bottom: 0.3rem; font-size: 1.15rem;">❔ 索引时遇到的常见问题</h3>
+        <details>
+            <summary>这个索引源的门槛高吗？</summary>
+            <div class="answer">就个人整理体验而言，基本没有特殊门槛。页面直接打开就可以浏览信息层级，不需要额外配置或注册。</div>
+        </details>
+        <details>
+            <summary>如何保持信息时效性？</summary>
+            <div class="answer">我一般每周做一次内容快照比对，把主要赛程和新闻标题存档。同时留意页面底部的更新标记，如果超过两周没有变动会标注“待核实”。</div>
+        </details>
+        <details>
+            <summary>与其他信息源如何搭配？</summary>
+            <div class="answer">我的做法是用 <a href="https://app-online-leyu.com.cn">乐鱼体育</a> 作骨架索引，再补充两个专业数据站和一个社区讨论流。这样既有结构化目录，也有更动态的反馈。</div>
+        </details>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="closing">
+        <p>整理这件事，对我来说更像是为兴趣搭建一个安静的目录架。把条目放好，偶尔抽出来翻一翻，再根据变化微调标签。这本关于 <a href="https://app-online-leyu.com.cn">乐鱼体育</a> 的笔记还会继续更新，不过节奏很慢——毕竟资料整理本身，就是一种温和的陪伴。</p>
+        <p style="margin-top: 0.8rem; color: #43737a; font-size: 0.9rem;">最近一次整理归档：2025-04 · 索引版本 3ee6</p>
+    </div>
+
+</div>
+</body>
+</html>
