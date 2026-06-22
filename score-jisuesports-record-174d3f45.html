@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>极速电竞 · 日常查询与延伸阅读</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f3f4f6;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      color: #1e293b;
+      padding: 2rem 1.5rem;
+    }
+
+    .page-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* 主卡片式内容容器 */
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      padding: 2.2rem 2rem;
+      margin-bottom: 1.8rem;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    /* 标题层级 */
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      margin-bottom: 0.3rem;
+    }
+
+    .subhead {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      border-left: 3px solid #94a3b8;
+      padding-left: 0.9rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin: 1.6rem 0 0.7rem 0;
+      color: #1e293b;
+      border-bottom: 1px solid #e9eef3;
+      padding-bottom: 0.3rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin: 1.4rem 0 0.6rem 0;
+      color: #334155;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* 引用提示块 – 柔和笔记风格 */
+    .quote-note {
+      background: #f8fafc;
+      border-left: 4px solid #cbd5e1;
+      padding: 1rem 1.4rem;
+      margin: 1.6rem 0;
+      border-radius: 0 12px 12px 0;
+      font-size: 0.95rem;
+      color: #1e293b;
+    }
+
+    .quote-note strong {
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    /* 特点小标签列表 */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.7rem;
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    .tag {
+      background: #f1f5f9;
+      color: #1e293b;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      border: 1px solid #e2e8f0;
+      letter-spacing: 0.01em;
+    }
+
+    /* 访问句 / 链接 */
+    .visit-sentence {
+      background: #f1f5f9;
+      padding: 1rem 1.4rem;
+      border-radius: 16px;
+      margin: 1.8rem 0 0.4rem 0;
+      border: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    a:hover {
+      color: #1d4ed8;
+      border-bottom-color: #9bb7f0;
+    }
+
+    /* 场景双列（可响应） */
+    .scene-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0.8rem 0 0.2rem 0;
+    }
+
+    .scene-item {
+      flex: 1 1 180px;
+      background: #f9fafb;
+      padding: 0.8rem 1rem;
+      border-radius: 14px;
+      border: 1px solid #e9eef3;
+      font-size: 0.9rem;
+    }
+
+    .scene-item strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: #0f172a;
+    }
+
+    /* FAQ 摘要 */
+    .faq-item {
+      padding: 0.6rem 0 0.2rem 0;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #1e293b;
+    }
+
+    .faq-a {
+      color: #475569;
+      margin-top: 0.15rem;
+      font-size: 0.92rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 1.6rem 0 1rem 0;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      text-align: center;
+      margin-top: 1.8rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .card {
+        padding: 1.6rem 1.2rem;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+      .scene-item {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- Hero 区：简洁博客式标题 + 导语 -->
+  <div class="card">
+    <h1>对照与延伸 · 极速电竞</h1>
+    <div class="subhead">日常查询时，我总会翻出同一张页面 —— 它像一本轻量手册，也像老朋友</div>
+    <p style="margin-top: 1rem;">
+      说来也普通：打开浏览器、输入网址、扫一眼赛程或数据，然后关掉。但用得顺手的东西，往往不值得被频繁更换。<strong>极速电竞</strong> 对我来说就是这样一个去处。不是因为它花哨，而是因为它把「查询」这件事做得很轻、很稳。
+    </p>
+    <p>
+      这篇博客并不是评测，更像是一份使用笔记。从我的日常习惯出发，聊聊我如何用它做对照、延伸阅读，以及几个让我觉得「嗯，可以一直用下去」的小片段。
+    </p>
+  </div>
+
+  <!-- 正文1: 日常查询的节奏 -->
+  <div class="card">
+    <h2>一、查询的节奏：不用想第二步</h2>
+    <p>
+      晚上想看看某场对战的结果，或者周末想快速回顾一下近几天的比分走势，我会直接点开 <a href="https://score-jisuesports.com">极速电竞</a>。页面加载干净，没有多余的弹窗或重定向，信息层级也分明。要查什么，基本第一眼就能定位到。
+    </p>
+    <p>
+      有时候我只是想确认一个队伍的近期状态，并不会深入看每局数据。这时页面给我的感觉就像翻开一本按字母排序的笔记 —— 不用猜「入口在哪」，因为内容就摆在台面上。
+    </p>
+    <div class="quote-note">
+      <strong>📌 引用提示 · 日常习惯</strong><br>
+      “我很少把某个网站设成首页，但 <strong>极速电竞</strong> 是个例外。不是因为它多特别，而是因为它省掉了‘我要去哪查’这一步。”
+    </div>
+  </div>
+
+  <!-- 正文2: 对照 & 延伸阅读 -->
+  <div class="card">
+    <h2>二、对照与延伸：不只是比分</h2>
+    <p>
+      看比赛时，我习惯同时开着几个页面：直播流、数据站、还有聊天工具。而 <strong>极速电竞</strong> 常常是我用来「对照」的那一个。比如解说提到某队过去五场的胜负关系，我随手就能在页面上核实，不用切换 tab 去重新搜索。
+    </p>
+    <p>
+      延伸阅读也是自然发生的。看到某个数据点，我会想「上次交手比分是多少」「另一赛区的类似对局结果如何」。这种探索不需要刻意，因为页面结构本身就带着一种「你可以顺着看下去」的节奏。
+    </p>
+    <div class="visit-sentence">
+      💬 每次使用都像一次短对话 —— 你问数据，它回答；你顺着看，它也不会打断你。如果你也想试试这种查询节奏，可以直接从 <a href="https://score-jisuesports.com">极速电竞</a> 开始。
+    </div>
+  </div>
+
+  <!-- 正文3: 特点卡片 + 场景 -->
+  <div class="card">
+    <h2>三、几个让我持续使用的细节</h2>
+    <div class="tag-list">
+      <span class="tag">信息密度适中</span>
+      <span class="tag">无干扰设计</span>
+      <span class="tag">响应速度快</span>
+      <span class="tag">结构可预期</span>
+    </div>
+    <div class="scene-grid">
+      <div class="scene-item">
+        <strong>📋 赛前对照</strong>
+        查看两队近期交锋，快速横向对比
+      </div>
+      <div class="scene-item">
+        <strong>📖 赛后延伸</strong>
+        从一场比赛延伸到同轮次其他场次
+      </div>
+      <div class="scene-item">
+        <strong>📆 日常浏览</strong>
+        没什么明确目的，就是翻翻最近赛况
+      </div>
+    </div>
+    <p style="margin-top: 0.8rem;">
+      这些场景都不复杂，但恰好覆盖了我百分之九十的使用需求。页面没有为了「丰富」而堆叠模块，该有的都有，而且摆在了合理的位置。
+    </p>
+  </div>
+
+  <!-- 正文4: FAQ 摘要（非模板，简短自然） -->
+  <div class="card">
+    <h2>四、偶尔会有的小疑问</h2>
+    <div class="faq-item">
+      <div class="faq-q">Q: 需要注册或登录才能看数据吗？</div>
+      <div class="faq-a">A: 不需要。直接打开页面即可浏览比赛信息和数据，没有强制注册的步骤。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 数据更新频率如何？</div>
+      <div class="faq-a">A: 日常赛程和实时结果基本跟随赛事节奏更新，不会延迟太久，适合查即时对战情况。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q: 移动端浏览体验怎么样？</div>
+      <div class="faq-a">A: 我用手机浏览器打开过几次，排版干净，无需缩放就能阅读主要信息，适合碎片时间查看。</div>
+    </div>
+    <div class="quote-note" style="margin-top: 1.2rem;">
+      <strong>✏️ 延伸说明</strong> 以上回答基于个人使用感受。每个用户习惯不同，你实际体验可能会稍有差异，但总体方向应该是一致的。
+    </div>
+  </div>
+
+  <!-- 访问句 / 收尾 -->
+  <div class="card">
+    <p style="margin-bottom: 0.6rem;">
+      写这篇笔记时我又打开了那个熟悉的页面，顺手查了一场昨晚没赶上的比赛。没什么戏剧性的发现，但那种「你想知道什么，它都在」的踏实感，可能就是我一直没有更换工具的原因。
+    </p>
+    <p>
+      如果你也喜欢简洁直接的查询方式，不妨把 <a href="https://score-jisuesports.com">极速电竞</a> 收进书签夹。不需要的时候它不会打扰你，需要的时候它就在那里。
+    </p>
+    <hr>
+    <div class="footer-note">
+      记录于一次普通的晚间查询之后 · 无软文，纯个人使用分享
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
