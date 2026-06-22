@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极速电竞 · 轻量级电竞信息站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafaf9;
+            color: #1a1a1a;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            padding: 2rem 1.5rem 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        /* hero 区域 — 留白为主，仅干净标题 */
+        .hero {
+            margin: 1.2rem 0 3rem;
+        }
+
+        .hero h1 {
+            font-weight: 500;
+            font-size: 2.2rem;
+            letter-spacing: -0.02em;
+            color: #111;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #555;
+            max-width: 600px;
+        }
+
+        /* 说明卡 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin: 2.8rem 0 3rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.04);
+            border: 1px solid #ededec;
+        }
+
+        .card h2 {
+            font-weight: 500;
+            font-size: 1.35rem;
+            margin-bottom: 0.6rem;
+            color: #1a1a1a;
+            border-left: 4px solid #1a1a1a;
+            padding-left: 0.9rem;
+        }
+
+        .card p, .card ul {
+            color: #3a3a3a;
+            font-size: 0.98rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.4rem;
+        }
+
+        .card li {
+            padding: 0.2rem 0;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .card li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #aaa;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.7rem;
+            margin-top: 0.8rem;
+        }
+
+        .tag {
+            background: #f0efee;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #333;
+        }
+
+        /* 自然链接区，融入文本 */
+        .context-link {
+            margin: 3rem 0 2.2rem;
+            background: #f4f3f1;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            font-size: 0.98rem;
+            line-height: 1.8;
+            color: #2c2c2c;
+        }
+
+        .context-link a {
+            color: #1a1a1a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1.5px;
+            font-weight: 500;
+        }
+
+        .context-link a:hover {
+            background: #dddcd9;
+            text-decoration: none;
+        }
+
+        .faq-mini {
+            margin: 2.5rem 0 2rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            color: #1f1f1f;
+            border-bottom: 1px dashed #d4d3d0;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-mini p {
+            margin-top: 0.6rem;
+            color: #3d3d3d;
+            font-size: 0.92rem;
+            padding-left: 0.6rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e3e1de;
+            margin: 2rem 0;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #8a8a88;
+            margin-top: 3rem;
+            text-align: left;
+        }
+
+        /* 响应式窄边 */
+        @media (max-width: 480px) {
+            body {
+                padding: 1.5rem 1rem 3rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+            .context-link {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 主视觉：一句话表明身份 -->
+    <div class="hero">
+        <h1>极速电竞</h1>
+        <p>一个能快速告诉你「这个电竞站在做什么」的轻介绍页。不绕弯，不堆砌，只整理出你关心的信息。</p>
+    </div>
+
+    <!-- 用途卡片：网站解决什么问题 -->
+    <div class="card-grid">
+        <div class="card">
+            <h2>用途 · 它在提供什么</h2>
+            <p><a href="https://play-jsesports.com" style="text-decoration:underline; text-underline-offset:2px; color:#1a1a1a; font-weight:500;">极速电竞</a> 围绕电竞资讯、赛事动态与社区互动展开，聚合了多个轻量模块。你可以把它理解为一个信息面板：</p>
+            <ul>
+                <li>热门赛事时间表与实时比分简讯</li>
+                <li>战队、选手基础数据查询</li>
+                <li>简洁向的电竞百科与术语速查</li>
+                <li>社区投票、讨论话题入口</li>
+            </ul>
+            <div class="tag-group">
+                <span class="tag">赛事日历</span>
+                <span class="tag">选手档案</span>
+                <span class="tag">速览比分</span>
+                <span class="tag">社区讨论</span>
+            </div>
+        </div>
+
+        <!-- 适合人群卡片 -->
+        <div class="card">
+            <h2>适合谁用</h2>
+            <p>无论你是刚接触电竞的新观众，还是想快速查某场比赛信息的老玩家，这个站的设计都偏向「少步骤、直接给」。典型场景包括：</p>
+            <ul>
+                <li>想确认今晚比赛的开始时间，不用翻几个 app</li>
+                <li>偶尔看比赛，但不想装太多专用软件</li>
+                <li>需要快速向朋友解释某个电竞术语</li>
+                <li>单纯想找同好聊聊最近比赛</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 自然链接段落：嵌入「极速电竞」文字，不刻意 -->
+    <div class="context-link">
+        <p>如果你是在找某个赛事的具体时间，或者想看看当前有哪些热门对战，可以直接去 <a href="https://play-jsesports.com">极速电竞</a> 的赛事板块。页面加载很快，没有多余弹窗，信息层级也相对清楚，适合随手查一局。</p>
+    </div>
+
+    <!-- FAQ 摘要 — 只挑两个最可能问的 -->
+    <div class="faq-mini">
+        <details>
+            <summary>这个站需要注册才能用吗？</summary>
+            <p>浏览赛事、查看选手数据、阅读百科都不需要登录。只有参与社区投票或发帖时才需要简单注册账号。</p>
+        </details>
+        <details>
+            <summary>信息更新及时吗？</summary>
+            <p>站内赛事时间表保持每日同步，比分部分由自动化数据源提供，通常延迟不超过一轮比赛。特殊杯赛期间会有人工校对。</p>
+        </details>
+    </div>
+
+    <hr>
+
+    <!-- 小提示：关于内容定位 -->
+    <p style="color:#5c5b59; font-size:0.9rem; line-height:1.6;">
+        提示：本页是对 <strong>极速电竞</strong> 的客观功能说明。网站内容以中文为主，覆盖主流电竞赛事，不包含博彩、代练或任何违规引导。如果你恰好想找一个轻量级电竞信息入口，可以试试看。
+    </p>
+
+    <!-- 隐式版权 / 脚注 — 非必要但增加完成度 -->
+    <div class="footer-note">
+        · 信息整理于公开页面，具体功能以实际网站为准。
+    </div>
+
+</div>
+</body>
+</html>
